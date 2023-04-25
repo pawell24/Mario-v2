@@ -2,18 +2,10 @@ import PillManager from './pillManager'
 import ImageManager from './imageManager'
 import UIManager from './uiManager'
 
-/**
- * Max number of columns
- */
 const MAX_X = 8
-/**
- * Max number of rows
- */
+
 const MAX_Y = 15
 
-/**
- * Used colors
- */
 const COLORS = ['brown', 'blue', 'yellow']
 
 const imageManager = new ImageManager()
@@ -22,11 +14,6 @@ const uiManager = new UIManager(MAX_X, MAX_Y, COLORS, imageManager)
 
 uiManager.generateCells()
 
-/**
- * Moves all possible pills down and waits 100ms
- * @param i falling rows number
- * @returns Promise
- */
 const fallPills = (i: number): Promise<number> =>
   new Promise<number>((resolve, reject) => {
     const count = pillManager.fallDown(i)
@@ -41,10 +28,6 @@ const fallPills = (i: number): Promise<number> =>
     }, 100)
   })
 
-/**
- * Shows images of deleted pills and viruses, waits 150ms if anything can be removed
- * @returns Promise
- */
 const showDelete = (): Promise<any> =>
   new Promise<any>((resolve, reject) => {
     if (pillManager.hasRemovable()) {
@@ -64,10 +47,6 @@ const showDelete = (): Promise<any> =>
     }
   })
 
-/**
- * Moves current pills down, checks if they collide on bottom, ends game of new pill cannot move,
- * Executes another time after 750ms
- */
 const movePills = async () => {
   if (pillManager.currentChunks.length < 1) {
     do {
@@ -109,10 +88,6 @@ const movePills = async () => {
   setTimeout(() => movePills(), 750)
 }
 
-/**
- * Refreshes the game, generates viruses, updates score and virus, and also generates new pill
- * @returns Promise
- */
 const start = async (): Promise<any> => {
   uiManager.updateScore(0)
   uiManager.updateLevel()
@@ -127,9 +102,6 @@ const start = async (): Promise<any> => {
   return new Promise<any>((res) => res(null))
 }
 
-/**
- * Adds event listeners to movement keyboard clicks
- */
 const setMovement = () => {
   window.addEventListener('keydown', (e: KeyboardEvent) => {
     if (uiManager.blockMove) {
