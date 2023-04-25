@@ -1,27 +1,6 @@
-import { IImageManager } from './imageManager'
-import { PillChunk, VirusChunk, VisualElement } from './models'
+import { PillChunk, VirusChunk, VisualElement, IPillManager, IImageManager } from './interfaces'
 
 let lastId = 0
-
-export interface IPillManager {
-  elements: VisualElement[]
-  currentChunks: PillChunk[]
-  pills: () => PillChunk[]
-  virusChunks: () => VirusChunk[]
-  nextPill: PillChunk[]
-  removedVirus: number
-  generatePill: () => void
-  next: () => void
-  generateVirus: (count: number) => void
-  move: (x: number, y: number) => void
-  moveDown: () => void
-  rotate: () => void
-  rotateRight: () => void
-  clearPills: () => number
-  clear: () => VisualElement[]
-  hasRemovable: () => boolean
-  fallDown: (row: number) => number
-}
 
 export default class PillManager implements IPillManager {
   public elements: VisualElement[] = []

@@ -1,11 +1,6 @@
-import { IImageManager } from './imageManager'
-import { Cell, CovidImage, PillChunk, VisualElement } from './models'
-
-const ANIMATION_POSITIONS: { x: number; y: number }[] = [
-  { x: 30, y: 30 },
-  { x: 130, y: 100 },
-  { x: 20, y: 140 },
-]
+import { Cell, PillChunk, VisualElement, IImageManager } from './interfaces'
+import { ANIMATION_POSITIONS } from './constants'
+import { CovidImage } from './covidImage'
 
 export interface IUIManager {
   container: HTMLDivElement

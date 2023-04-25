@@ -1,23 +1,3 @@
-export interface Cell {
-  row: number
-  column: number
-  element?: HTMLDivElement
-}
-
-export interface VisualElement {
-  color: string
-  row: number
-  column: number
-  image: string
-}
-
-export interface PillChunk extends VisualElement {
-  id: number
-  canMove: boolean
-}
-
-export interface VirusChunk extends VisualElement {}
-
 export class CovidImage {
   color: string
   frame: number = 1

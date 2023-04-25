@@ -1,12 +1,7 @@
 import PillManager from './pillManager'
 import ImageManager from './imageManager'
 import UIManager from './uiManager'
-
-const MAX_X = 8
-
-const MAX_Y = 15
-
-const COLORS = ['brown', 'blue', 'yellow']
+import { COLORS, MAX_Y, MAX_X } from './constants'
 
 const imageManager = new ImageManager()
 const pillManager = new PillManager(COLORS, MAX_Y, MAX_X, imageManager)

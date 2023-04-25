@@ -1,17 +1,4 @@
-import { PillChunk, VirusChunk, VisualElement } from './models'
-
-export interface IImageManager {
-  getVirus: (color: string) => string
-  getPill: (pill: PillChunk) => string
-  getPillLeft: (pill: PillChunk) => string
-  setCurrentPillImages: (pills: PillChunk[]) => void
-  setPillImages: (pills: PillChunk[]) => void
-  setDelete: (elements: VisualElement[]) => void
-  getNumber: (num: string) => string
-  getCovid: (color: string, num: number) => string
-  getPillTop: (pill: PillChunk) => string
-  getPillDown: (pill: PillChunk) => string
-}
+import { PillChunk, VirusChunk, VisualElement, IImageManager } from './interfaces'
 
 export default class ImageManager implements IImageManager {
   getVirus(color: string): string {
