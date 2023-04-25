@@ -13,14 +13,14 @@ export class CovidImage {
     this.maxFrame = maxFrame
   }
 
-  nextFrame(): void {
+  setNextFrame(): void {
     this.frame++
     if (this.frame > this.maxFrame) {
       this.frame = 1
     }
   }
 
-  nextPosition() {
+  setNextPosition() {
     this.position++
     if (this.position > this.maxPosition) {
       this.position = 0

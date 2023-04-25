@@ -107,10 +107,10 @@ export default class UIManager implements IUIManager {
     ctx.clearRect(0, 0, this.covidCanvas.width, this.covidCanvas.height)
 
     this.covidImages.forEach((img) => {
-      img.nextFrame()
-      img.nextPosition()
+      img.setNextFrame()
+      img.setNextPosition()
 
-      img.image.src = this.imageManager.getCovid(img.color, img.frame)
+      img.image.src = this.imageManager.getCovidImg(img.color, img.frame)
 
       ctx.drawImage(
         img.image,
@@ -140,7 +140,7 @@ export default class UIManager implements IUIManager {
   renderNextPill(pills: PillChunk[]) {
     this.nextPillContainer.innerHTML = ''
 
-    this.imageManager.setCurrentPillImages(pills)
+    this.imageManager.setCurrentPillImgs(pills)
 
     pills.forEach((p) => {
       const cell = document.createElement('div')
@@ -249,7 +249,7 @@ export default class UIManager implements IUIManager {
       .split('')
       .forEach((num) => {
         const img = document.createElement('img')
-        img.src = this.imageManager.getNumber(num)
+        img.src = this.imageManager.getNumberImg(num)
 
         this.scoreContainer.appendChild(img)
       })
@@ -265,7 +265,7 @@ export default class UIManager implements IUIManager {
       .split('')
       .forEach((num) => {
         const img = document.createElement('img')
-        img.src = this.imageManager.getNumber(num)
+        img.src = this.imageManager.getNumberImg(num)
 
         this.highScoreContainer.appendChild(img)
       })
@@ -278,7 +278,7 @@ export default class UIManager implements IUIManager {
       .split('')
       .forEach((num) => {
         const img = document.createElement('img')
-        img.src = this.imageManager.getNumber(num)
+        img.src = this.imageManager.getNumberImg(num)
 
         this.levelContainer.appendChild(img)
       })
@@ -292,7 +292,7 @@ export default class UIManager implements IUIManager {
       .split('')
       .forEach((x) => {
         const img = new Image()
-        img.src = this.imageManager.getNumber(x)
+        img.src = this.imageManager.getNumberImg(x)
         this.virusCountContainer.appendChild(img)
       })
   }

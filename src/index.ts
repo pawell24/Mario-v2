@@ -24,12 +24,11 @@ const fallPills = (i: number): Promise<number> =>
   })
 
 const showDelete = (): Promise<any> =>
-  new Promise<any>((resolve, reject) => {
+  new Promise<any>((resolve) => {
     if (pillManager.hasRemovable()) {
       uiManager.refreshCells(pillManager.elements)
       pillManager.clear().forEach((x) => {
         const cell = uiManager.getCell(x)
-
         cell.element.style.backgroundImage = `url(${x.image})`
       })
 

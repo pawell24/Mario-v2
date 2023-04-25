@@ -19,16 +19,16 @@ export interface PillChunk extends VisualElement {
 export interface VirusChunk extends VisualElement {}
 
 export interface IImageManager {
-  getVirus: (color: string) => string
-  getPill: (pill: PillChunk) => string
-  getPillLeft: (pill: PillChunk) => string
-  setCurrentPillImages: (pills: PillChunk[]) => void
-  setPillImages: (pills: PillChunk[]) => void
-  setDelete: (elements: VisualElement[]) => void
-  getNumber: (num: string) => string
-  getCovid: (color: string, num: number) => string
-  getPillTop: (pill: PillChunk) => string
-  getPillDown: (pill: PillChunk) => string
+  getVirusImg: (color: string) => string
+  getPillImg: (pill: PillChunk) => string
+  getPillLeftImg: (pill: PillChunk) => string
+  setCurrentPillImgs: (pills: PillChunk[]) => void
+  setNewPillImgs: (pills: PillChunk[]) => void
+  deleteImgs: (elements: VisualElement[]) => void
+  getNumberImg: (num: string) => string
+  getCovidImg: (color: string, num: number) => string
+  getPillTopImg: (pill: PillChunk) => string
+  getPillDownImg: (pill: PillChunk) => string
 }
 
 export interface IPillManager {

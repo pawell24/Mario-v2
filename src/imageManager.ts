@@ -1,19 +1,19 @@
 import { PillChunk, VirusChunk, VisualElement, IImageManager } from './interfaces'
 
 export default class ImageManager implements IImageManager {
-  getVirus(color: string): string {
+  getVirusImg(color: string): string {
     return `img/covid_${color}.png`
   }
 
-  getPill(pill: PillChunk): string {
+  getPillImg(pill: PillChunk): string {
     return `img/${pill.color}_dot.png`
   }
 
-  getPillLeft(pill: PillChunk): string {
+  getPillLeftImg(pill: PillChunk): string {
     return `img/${pill.color}_left.png`
   }
 
-  setCurrentPillImages(pills: PillChunk[]): void {
+  setCurrentPillImgs(pills: PillChunk[]): void {
     const left = pills[0].column < pills[1].column ? pills[0] : pills[1]
     const right = pills.find((x) => x !== left)
     if (left.row < right.row) {
@@ -28,16 +28,7 @@ export default class ImageManager implements IImageManager {
     }
   }
 
-  setPillImages(pills: PillChunk[]): void {
-    pills.forEach((pill) => {
-      if (pills.some((x) => x.id == pill.id && x != pill)) {
-        return
-      }
-      pill.image = `img/${pill.color}_dot.png`
-    })
-  }
-
-  setDelete(elements: VisualElement[]) {
+  deleteImgs(elements: VisualElement[]) {
     const pills: PillChunk[] = elements
       .filter((x) => (<PillChunk>x).id !== undefined)
       .map((x) => <PillChunk>x)
@@ -49,24 +40,33 @@ export default class ImageManager implements IImageManager {
       pill.image = `img/${pill.color}_o.png`
     })
 
-    virus.forEach((v) => {
-      v.image = `img/${v.color}_x.png`
+    virus.forEach((vir) => {
+      vir.image = `img/${vir.color}_x.png`
     })
   }
 
-  getNumber(num: string): string {
-    return `img/cyfry/${num}.png`
+  setNewPillImgs(pills: PillChunk[]): void {
+    pills.forEach((pill) => {
+      if (pills.some((x) => x.id == pill.id && x != pill)) {
+        return
+      }
+      pill.image = `img/${pill.color}_dot.png`
+    })
   }
 
-  getCovid(color: string, num: number): string {
+  getCovidImg(color: string, num: number): string {
     return `img/lupa/${color}/${num}.png`
   }
 
-  getPillTop(pill: PillChunk): string {
+  getNumberImg(num: string): string {
+    return `img/cyfry/${num}.png`
+  }
+
+  getPillTopImg(pill: PillChunk): string {
     return `img/${pill.color}_up.png`
   }
 
-  getPillDown(pill: PillChunk): string {
+  getPillDownImg(pill: PillChunk): string {
     return `img/${pill.color}_down.png`
   }
 }

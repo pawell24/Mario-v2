@@ -38,7 +38,7 @@ export default class PillManager implements IPillManager {
     this.currentChunks[1].column = 4
     this.currentChunks[1].row = 0
 
-    this.imageManager.setCurrentPillImages(this.currentChunks)
+    this.imageManager.setCurrentPillImgs(this.currentChunks)
     if (this.elements.some((x) => (x.column == 3 || x.column == 4) && x.row == 0)) {
       throw new Error('Game over')
     }
@@ -53,7 +53,7 @@ export default class PillManager implements IPillManager {
 
       const color = this.randomColor()
 
-      this.elements.push({ row, column, color, image: this.imageManager.getVirus(color) })
+      this.elements.push({ row, column, color, image: this.imageManager.getVirusImg(color) })
     }
   }
 
@@ -133,7 +133,7 @@ export default class PillManager implements IPillManager {
       this.move(-1, 0)
     }
 
-    this.imageManager.setCurrentPillImages(this.currentChunks)
+    this.imageManager.setCurrentPillImgs(this.currentChunks)
   }
 
   rotateRight() {
@@ -156,7 +156,7 @@ export default class PillManager implements IPillManager {
       this.move(1, 0)
     }
 
-    this.imageManager.setCurrentPillImages(this.currentChunks)
+    this.imageManager.setCurrentPillImgs(this.currentChunks)
   }
 
   clearPills(): number {
@@ -195,8 +195,8 @@ export default class PillManager implements IPillManager {
 
   clear(): VisualElement[] {
     this.elements = this.elements.filter((x) => !this.toRemove.some((y) => x == y))
-    this.imageManager.setPillImages(this.pills())
-    this.imageManager.setDelete(this.toRemove)
+    this.imageManager.setNewPillImgs(this.pills())
+    this.imageManager.deleteImgs(this.toRemove)
     return this.toRemove
   }
 
