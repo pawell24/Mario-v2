@@ -1,0 +1,8 @@
+{
+    "include": ["src/*"],
+    "compilerOptions": {
+        "lib": ["ES2016", "DOM"],
+        "target": "ES2016",
+        "outDir": "./dist/",
+    },
+}
