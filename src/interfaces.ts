@@ -38,15 +38,15 @@ export interface IPillManager {
   virusChunks: () => VirusChunk[]
   nextPill: PillChunk[]
   removedVirus: number
-  generatePill: () => void
+  createPill: () => void
   next: () => void
   generateVirus: (count: number) => void
-  move: (x: number, y: number) => void
+  movePill: (x: number, y: number) => void
   moveDown: () => void
-  rotate: () => void
-  rotateRight: () => void
+  rotatePill: () => void
+  rotateRightPill: () => void
   clearPills: () => number
   clear: () => VisualElement[]
   hasRemovable: () => boolean
-  fallDown: (row: number) => number
+  fallDownPill: (row: number) => number
 }

@@ -22,7 +22,7 @@ export default class PillManager implements IPillManager {
 
   private randomColor = (): string => this.colors[Math.floor(Math.random() * this.colors.length)]
 
-  generatePill(): void {
+  createPill(): void {
     this.nextPill = [
       { id: lastId, color: this.randomColor(), row: 0, column: 0, canMove: true, image: '' },
       { id: lastId, color: this.randomColor(), row: 0, column: 1, canMove: true, image: '' },
@@ -43,7 +43,7 @@ export default class PillManager implements IPillManager {
       throw new Error('Game over')
     }
     this.elements.push(...this.currentChunks)
-    this.generatePill()
+    this.createPill()
   }
 
   generateVirus(count: number): void {
@@ -57,7 +57,7 @@ export default class PillManager implements IPillManager {
     }
   }
 
-  move(x: number, y: number): void {
+  movePill(x: number, y: number): void {
     const leftChunk =
       this.currentChunks[0].column < this.currentChunks[1].column
         ? this.currentChunks[0]
@@ -113,7 +113,7 @@ export default class PillManager implements IPillManager {
     })
   }
 
-  rotate(): void {
+  rotatePill(): void {
     const movingChunk = this.currentChunks
       .slice(0)
       .sort((a, b) => b.column - a.column)
@@ -130,13 +130,13 @@ export default class PillManager implements IPillManager {
     }
 
     if (otherChunk.column >= this.maxColumns || movingChunk.column >= this.maxColumns) {
-      this.move(-1, 0)
+      this.movePill(-1, 0)
     }
 
     this.imageManager.setCurrentPillImgs(this.currentChunks)
   }
 
-  rotateRight() {
+  rotateRightPill() {
     const movingChunk = this.currentChunks
       .slice(0)
       .sort((a, b) => b.column - a.column)
@@ -153,7 +153,7 @@ export default class PillManager implements IPillManager {
     }
 
     if (otherChunk.column >= this.maxColumns || movingChunk.column >= this.maxColumns) {
-      this.move(1, 0)
+      this.movePill(1, 0)
     }
 
     this.imageManager.setCurrentPillImgs(this.currentChunks)
@@ -202,7 +202,7 @@ export default class PillManager implements IPillManager {
 
   hasRemovable = (): boolean => this.toRemove.length > 0
 
-  fallDown(row: number): number {
+  fallDownPill(row: number): number {
     if (row >= this.maxRow - 1) {
       return 0
     }

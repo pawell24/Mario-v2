@@ -11,7 +11,7 @@ uiManager.generateCells()
 
 const fallPills = (i: number): Promise<number> =>
   new Promise<number>((resolve, reject) => {
-    const count = pillManager.fallDown(i)
+    const count = pillManager.fallDownPill(i)
 
     if (count == 0) {
       resolve(count)
@@ -86,7 +86,7 @@ const start = async (): Promise<any> => {
   uiManager.updateScore(0)
   uiManager.updateLevel()
   pillManager.generateVirus(Math.ceil(Math.random() * 2) + 2)
-  pillManager.generatePill()
+  pillManager.createPill()
   uiManager.refreshCells(pillManager.elements)
   uiManager.updateVirus(pillManager.virusChunks().length)
   uiManager.renderNextPill(pillManager.nextPill)
@@ -108,13 +108,13 @@ const setMovement = () => {
     if (e.key == 's') {
       pillManager.moveDown()
     } else if (e.key == 'a') {
-      pillManager.move(-1, 0)
+      pillManager.movePill(-1, 0)
     } else if (e.key == 'd') {
-      pillManager.move(1, 0)
+      pillManager.movePill(1, 0)
     } else if (e.key == 'w') {
-      pillManager.rotate()
+      pillManager.rotatePill()
     } else if (e.key == 'Shift') {
-      pillManager.rotateRight()
+      pillManager.rotateRightPill()
     }
     uiManager.refreshCells(pillManager.elements)
   })

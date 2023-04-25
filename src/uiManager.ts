@@ -1,21 +1,21 @@
 import { Cell, PillChunk, VisualElement, IImageManager } from './interfaces'
-import { ANIMATION_POSITIONS } from './constants'
+import { ANIMATION_CORDINATES } from './constants'
 import { CovidImage } from './covidImage'
 
 export interface IUIManager {
   container: HTMLDivElement
   scoreContainer: HTMLParagraphElement
-  highScoreContainer: HTMLParagraphElement
-  virusCountContainer: HTMLParagraphElement
-  levelContainer: HTMLParagraphElement
+  highScoreEl: HTMLParagraphElement
+  virusCountEl: HTMLParagraphElement
+  levelEl: HTMLParagraphElement
   covidCanvas: HTMLCanvasElement
-  nextPillContainer: HTMLDivElement
+  nextPillEl: HTMLDivElement
   gameOverScreen: HTMLDivElement
   nextLevelScreen: HTMLDivElement
   gameOverDr: HTMLDivElement
-  handUpContainer: HTMLDivElement
-  handMidContainer: HTMLDivElement
-  handDownContainer: HTMLDivElement
+  handUpEl: HTMLDivElement
+  handMidEl: HTMLDivElement
+  handDownEl: HTMLDivElement
   score: number
   highScore: number
   level: number
@@ -39,17 +39,17 @@ export interface IUIManager {
 export default class UIManager implements IUIManager {
   container!: HTMLDivElement
   scoreContainer!: HTMLParagraphElement
-  highScoreContainer!: HTMLParagraphElement
-  virusCountContainer!: HTMLParagraphElement
-  levelContainer!: HTMLParagraphElement
+  highScoreEl!: HTMLParagraphElement
+  virusCountEl!: HTMLParagraphElement
+  levelEl!: HTMLParagraphElement
   covidCanvas!: HTMLCanvasElement
-  nextPillContainer!: HTMLDivElement
+  nextPillEl!: HTMLDivElement
   gameOverScreen!: HTMLDivElement
   nextLevelScreen!: HTMLDivElement
   gameOverDr!: HTMLDivElement
-  handUpContainer!: HTMLDivElement
-  handMidContainer!: HTMLDivElement
-  handDownContainer!: HTMLDivElement
+  handUpEl!: HTMLDivElement
+  handMidEl!: HTMLDivElement
+  handDownEl!: HTMLDivElement
 
   score = 0
   highScore = 0
@@ -67,21 +67,21 @@ export default class UIManager implements IUIManager {
   ) {
     this.container = <HTMLDivElement>document.getElementById('container')
     this.scoreContainer = <HTMLParagraphElement>document.getElementById('score')
-    this.highScoreContainer = <HTMLParagraphElement>document.getElementById('top-score')
-    this.virusCountContainer = <HTMLParagraphElement>document.getElementById('virus')
-    this.levelContainer = <HTMLParagraphElement>document.getElementById('level')
+    this.highScoreEl = <HTMLParagraphElement>document.getElementById('top-score')
+    this.virusCountEl = <HTMLParagraphElement>document.getElementById('virus')
+    this.levelEl = <HTMLParagraphElement>document.getElementById('level')
     this.covidCanvas = <HTMLCanvasElement>document.getElementById('virus-canvas')
-    this.nextPillContainer = <HTMLDivElement>document.getElementById('next-pill')
+    this.nextPillEl = <HTMLDivElement>document.getElementById('next-pill')
     this.gameOverScreen = <HTMLDivElement>document.getElementById('game-over')
     this.nextLevelScreen = <HTMLDivElement>document.getElementById('next-level')
     this.gameOverDr = <HTMLDivElement>document.getElementById('game-over-dr')
-    this.handUpContainer = <HTMLDivElement>document.getElementById('hand')
-    this.handMidContainer = <HTMLDivElement>document.getElementById('hand-middle')
-    this.handDownContainer = <HTMLDivElement>document.getElementById('hand-down')
+    this.handUpEl = <HTMLDivElement>document.getElementById('hand')
+    this.handMidEl = <HTMLDivElement>document.getElementById('hand-middle')
+    this.handDownEl = <HTMLDivElement>document.getElementById('hand-down')
 
     this.highScore = parseInt(localStorage.getItem('score') ?? '0')
     this.covidImages = colors.map(
-      (col, index) => new CovidImage(col, 4, index, ANIMATION_POSITIONS.length - 1)
+      (col, index) => new CovidImage(col, 4, index, ANIMATION_CORDINATES.length - 1)
     )
   }
 
@@ -114,8 +114,8 @@ export default class UIManager implements IUIManager {
 
       ctx.drawImage(
         img.image,
-        ANIMATION_POSITIONS[img.position].x,
-        ANIMATION_POSITIONS[img.position].y
+        ANIMATION_CORDINATES[img.position].x,
+        ANIMATION_CORDINATES[img.position].y
       )
     })
 
@@ -138,7 +138,7 @@ export default class UIManager implements IUIManager {
     this.cells.find((x) => x.column == pill.column && x.row == pill.row)
 
   renderNextPill(pills: PillChunk[]) {
-    this.nextPillContainer.innerHTML = ''
+    this.nextPillEl.innerHTML = ''
 
     this.imageManager.setCurrentPillImgs(pills)
 
@@ -146,7 +146,7 @@ export default class UIManager implements IUIManager {
       const cell = document.createElement('div')
       cell.classList.add('cell')
       cell.style.backgroundImage = `url(${p.image})`
-      this.nextPillContainer.appendChild(cell)
+      this.nextPillEl.appendChild(cell)
     })
   }
 
@@ -159,19 +159,19 @@ export default class UIManager implements IUIManager {
       const time = 30
       this.blockMove = true
 
-      this.handUpContainer.style.display = 'none'
-      this.handMidContainer.style.display = 'block'
+      this.handUpEl.style.display = 'none'
+      this.handMidEl.style.display = 'block'
 
       setTimeout(() => {
-        this.handMidContainer.style.display = 'none'
-        this.handDownContainer.style.display = 'block'
+        this.handMidEl.style.display = 'none'
+        this.handDownEl.style.display = 'block'
       }, 100)
 
-      this.nextPillContainer.style.animationName = 'nextPill'
+      this.nextPillEl.style.animationName = 'nextPill'
 
       const moveUpInterval = setInterval(() => {
         y -= 10
-        this.nextPillContainer.style.top = `${y}px`
+        this.nextPillEl.style.top = `${y}px`
         if (y <= 40) {
           moveLeft = true
         }
@@ -188,7 +188,7 @@ export default class UIManager implements IUIManager {
 
         x -= 10
 
-        this.nextPillContainer.style.left = `${x}px`
+        this.nextPillEl.style.left = `${x}px`
         if (x <= 660) {
           moveDown = true
         }
@@ -207,17 +207,17 @@ export default class UIManager implements IUIManager {
         y += 10
 
         if (y >= 150) {
-          this.nextPillContainer.style.animationName = ''
+          this.nextPillEl.style.animationName = ''
         }
 
-        this.nextPillContainer.style.top = `${y}px`
+        this.nextPillEl.style.top = `${y}px`
         if (y >= 200) {
           clearInterval(moveDownInterval)
-          this.nextPillContainer.style.top = '120px'
-          this.nextPillContainer.style.left = '900px'
-          this.nextPillContainer.style.animationName = ''
-          this.handDownContainer.style.display = 'none'
-          this.handUpContainer.style.display = 'block'
+          this.nextPillEl.style.top = '120px'
+          this.nextPillEl.style.left = '900px'
+          this.nextPillEl.style.animationName = ''
+          this.handDownEl.style.display = 'none'
+          this.handUpEl.style.display = 'block'
           this.blockMove = false
           resolve(null)
         }
@@ -258,7 +258,7 @@ export default class UIManager implements IUIManager {
       localStorage.setItem('score', this.highScore.toString())
     }
 
-    this.highScoreContainer.innerHTML = ''
+    this.highScoreEl.innerHTML = ''
 
     this.highScore
       .toString()
@@ -267,12 +267,12 @@ export default class UIManager implements IUIManager {
         const img = document.createElement('img')
         img.src = this.imageManager.getNumberImg(num)
 
-        this.highScoreContainer.appendChild(img)
+        this.highScoreEl.appendChild(img)
       })
   }
 
   updateLevel(): void {
-    this.levelContainer.innerHTML = ''
+    this.levelEl.innerHTML = ''
     this.level
       .toString()
       .split('')
@@ -280,12 +280,12 @@ export default class UIManager implements IUIManager {
         const img = document.createElement('img')
         img.src = this.imageManager.getNumberImg(num)
 
-        this.levelContainer.appendChild(img)
+        this.levelEl.appendChild(img)
       })
   }
 
   updateVirus(count: number): void {
-    this.virusCountContainer.innerHTML = ''
+    this.virusCountEl.innerHTML = ''
 
     count
       .toString()
@@ -293,7 +293,7 @@ export default class UIManager implements IUIManager {
       .forEach((x) => {
         const img = new Image()
         img.src = this.imageManager.getNumberImg(x)
-        this.virusCountContainer.appendChild(img)
+        this.virusCountEl.appendChild(img)
       })
   }
 

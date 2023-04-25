@@ -1,21 +1,21 @@
 export class CovidImage {
   color: string
   frame: number = 1
-  maxFrame: number
+  maxSize: number
   image = new Image(50, 50)
   position: number = 0
   maxPosition: number
 
-  constructor(color: string, maxFrame: number, position: number, maxPosition: number) {
+  constructor(color: string, maxSize: number, position: number, maxPosition: number) {
     this.color = color
     this.maxPosition = maxPosition
     this.position = position
-    this.maxFrame = maxFrame
+    this.maxSize = maxSize
   }
 
   setNextFrame(): void {
     this.frame++
-    if (this.frame > this.maxFrame) {
+    if (this.frame > this.maxSize) {
       this.frame = 1
     }
   }
