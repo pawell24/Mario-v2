@@ -1,171 +1,181 @@
 .row {
-    display: flex;
+  display: flex;
 }
 
 .cell {
-    width: 31px;
-    height: 31px;
-    background-repeat: no-repeat;
-    background-size: 100%;
+  width: 31px;
+  height: 31px;
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 body {
-    background-color: black;
-    color: aquamarine;
+  background-color: black;
+  color: aquamarine;
 }
 
 #container {
-    width: fit-content;
-    position: relative;
-    top: 180px;
-    left: 505px;
+  width: fit-content;
+  position: relative;
+  top: 180px;
+  left: 505px;
 }
 
 .game {
-    width: 1200px;
-    height: 800px;
-    background-image: url('./img/pf.png');
-    background-repeat: no-repeat;
-    background-size: 100%;
-}
-
-
-#top-score {
-    background-color: black;
-    position: fixed;
-    top: 140px;
-    height: 30px;
-    left: 150px;
-    width: 220px;
-    display: flex;
-    justify-content: flex-end;
-}
-
-#top-score img {
-    height: max-content;
-}
-
-#score {
-    background-color: black;
-    position: fixed;
-    top: 230px;
-    height: 30px;
-    left: 150px;
-    width: 220px;
-    display: flex;
-    justify-content: flex-end;
+  width: 1200px;
+  height: 800px;
+  background-image: url('./img/pf.png');
+  background-repeat: no-repeat;
+  background-size: 100%;
 }
 
 #virus {
-    position: fixed;
-    left: 1050px;
-    top: 620px;
-    height: 30px;
-    background-color: black;
-    width: 70px;
-    display: flex;
-    justify-content: flex-end;
+  position: fixed;
+  left: 1050px;
+  top: 620px;
+  height: 30px;
+  background-color: black;
+  width: 70px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 #virus-canvas {
-    position: fixed;
-    top: 440px;
-    left: 120px;
-    background-color: black;
+  position: fixed;
+  top: 440px;
+  left: 120px;
+  background-color: black;
 }
 
-#blue-img, #brown-img, #yellow-img {
-    position: fixed;
-    width: 110px;
-    height: 110px;
+#blue-img,
+#brown-img,
+#yellow-img {
+  position: fixed;
+  width: 110px;
+  height: 110px;
 }
 
 #next-pill {
-    width: min-content;
-    height: min-content;
-    display: flex;
-    position: fixed;
-    top: 20px;
-    left: 900px;
-    animation-duration: 1000ms;
-    animation-iteration-count: infinite;
-    animation-fill-mode: none;
-    animation-timing-function: steps(1);
-}
-
-#game-over, #next-level {
-    display: none;
-    position: fixed;
-    top: 250px;
-    left: 500px;
-    width: 300px;
-    height: 100px;
-    background-size: 100%;
-    
-}
-
-#game-over {
-    background-image: url('img/go.png');
-}
-
-#next-level {
-    background-image: url('img/sc.png');
+  width: min-content;
+  height: min-content;
+  display: flex;
+  position: fixed;
+  top: 20px;
+  left: 900px;
+  animation-duration: 1000ms;
+  animation-iteration-count: infinite;
+  animation-fill-mode: none;
+  animation-timing-function: steps(1);
 }
 
 #game-over-dr {
-    position: fixed;
-    top: 90px;
-    left: 900px;
-    width: 220px;
-    display: none;
-    z-index: 100;
-}
-
-#hand, #hand-down {
-    position: fixed;
-    display: flex;
-    flex-direction: column;
-    max-width: min-content;
-    z-index: 0;
+  position: fixed;
+  top: 90px;
+  left: 900px;
+  width: 220px;
+  display: none;
+  z-index: 100;
 }
 
 #hand {
-    top: 145px;
-    left: 940px;
+  top: 145px;
+  left: 940px;
 }
 
 #hand-down {
-    top: 200px;
-    left: 940px;
-    display: none;
+  top: 200px;
+  left: 940px;
+  display: none;
 }
 
 #hand-middle div {
-    max-width: min-content;
-    display: flex;
+  max-width: min-content;
+  display: flex;
 }
 
 #hand-middle {
-    position: fixed;
-    top: 170px;
-    left: 920px;
-    display: none;
+  position: fixed;
+  top: 170px;
+  left: 920px;
+  display: none;
 }
 
 #level {
-    position: fixed;
-    left: 1050px;
-    top: 440px;
-    height: 30px;
-    background-color: black;
-    width: 70px;
-    display: flex;
-    justify-content: flex-end;
+  position: fixed;
+  left: 1050px;
+  top: 440px;
+  height: 30px;
+  background-color: black;
+  width: 70px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#game-over,
+#next-level {
+  display: none;
+  position: fixed;
+  top: 250px;
+  left: 500px;
+  width: 300px;
+  height: 100px;
+  background-size: 100%;
+}
+
+#hand,
+#hand-down {
+  position: fixed;
+  display: flex;
+  flex-direction: column;
+  max-width: min-content;
+  z-index: 0;
+}
+
+#game-over {
+  background-image: url('img/go.png');
+}
+
+#next-level {
+  background-image: url('img/sc.png');
+}
+
+#top-score {
+  background-color: black;
+  position: fixed;
+  top: 140px;
+  height: 30px;
+  left: 150px;
+  width: 220px;
+  display: flex;
+  justify-content: flex-end;
+}
+
+#top-score img {
+  height: max-content;
+}
+
+#score {
+  background-color: black;
+  position: fixed;
+  top: 230px;
+  height: 30px;
+  left: 150px;
+  width: 220px;
+  display: flex;
+  justify-content: flex-end;
 }
 
 @keyframes nextPill {
-    25% { rotate: 90deg; }
-    50% { rotate: 180deg; }
-    75% { rotate: 270deg; }
-    100% { rotate: 360deg; }
+  25% {
+    rotate: 90deg;
+  }
+  50% {
+    rotate: 180deg;
+  }
+  75% {
+    rotate: 270deg;
+  }
+  100% {
+    rotate: 360deg;
+  }
 }
