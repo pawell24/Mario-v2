@@ -54,19 +54,19 @@ export default class ImageManager implements IImageManager {
     })
   }
 
-  getCovidImg(color: string, num: number): string {
-    return `img/lupa/${color}/${num}.png`
-  }
-
-  getNumberImg(num: string): string {
-    return `img/cyfry/${num}.png`
-  }
-
   getPillTopImg(pill: PillChunk): string {
     return `img/${pill.color}_up.png`
   }
 
   getPillDownImg(pill: PillChunk): string {
     return `img/${pill.color}_down.png`
+  }
+
+  getCovidImg(color: string, num: number): string {
+    return `img/lupa/${color}/${num}.png`
+  }
+
+  getNumberImg(num: string): string {
+    return `img/cyfry/${num}.png`
   }
 }

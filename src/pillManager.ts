@@ -200,8 +200,6 @@ export default class PillManager implements IPillManager {
     return this.toRemove
   }
 
-  hasRemovable = (): boolean => this.toRemove.length > 0
-
   fallDownPill(row: number): number {
     if (row >= this.maxRow - 1) {
       return 0
@@ -236,4 +234,6 @@ export default class PillManager implements IPillManager {
 
     return fallenCells
   }
+
+  hasRemovable = (): boolean => this.toRemove.length > 0
 }
